@@ -48,6 +48,15 @@ class MagickMetadata
   def height
     dimensions[1]
   end
+  
+  def exif
+    exif = Hash.new
+    @exif_data.split(/\r?\n/).each do |data|
+      key, value = data.gsub(/exif:/, '').split('=', 2)
+      exif[key] = value
+    end
+    exif
+  end
 
 protected
 
@@ -92,7 +101,8 @@ protected
       'Y' => 'page_canvas_y_offset',
       'Z' => 'unique_filename',
       '@' => 'calculated_trim_bounding_box',
-      '#' => 'calculated_signature_hash_of_image_values'
+      '#' => 'calculated_signature_hash_of_image_values',
+      '[EXIF:*]' => 'exif_data'
     }
   end
 
