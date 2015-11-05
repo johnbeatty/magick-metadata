@@ -102,7 +102,9 @@ protected
       'Z' => 'unique_filename',
       '@' => 'calculated_trim_bounding_box',
       '#' => 'calculated_signature_hash_of_image_values',
-      '[EXIF:*]' => 'exif_data'
+      '[EXIF:*]' => 'exif_data',
+      '[date:create]' => 'date_create',
+      '[date:modify]' => 'date_modify'
     }
   end
 
